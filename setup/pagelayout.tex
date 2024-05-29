@@ -1,0 +1,33 @@
+\pagenumbering{gobble}
+% \pagenumbering{roman}   % to show preface on toc
+\newpage
+\pagestyle{plain}
+\pagenumbering{roman}
+
+% \setcounter{tocdepth}{1}
+
+\pdfbookmark{Abstract}{abstract}
+\begin{abstract}
+    \input{frontmatter/abstract}
+\end{abstract}
+
+% \pdfbookmark{Dedication}{dedication}
+% \chapter*{Dedication}
+% \input{frontmatter/dedication}
+
+% \pdfbookmark{Declaration}{declaration}
+% \chapter*{Declaration}
+% \input{frontmatter/declaration}
+
+\pdfbookmark{Acknowledgments}{acknowledgement}
+\chapter*{Acknowledgements}
+\input{frontmatter/acknowledgement}
+
+\clearpage\phantomsection\pdfbookmark{\contentsname}{toc} % https://tex.stackexchange.com/a/42352/114006
+\tableofcontents
+
+% \listoftables      
+% \listoffigures   
+
+\pagestyle{fancy}
+\pagenumbering{arabic}

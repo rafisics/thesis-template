@@ -1,0 +1,49 @@
+%%%% Preamble
+
+\documentclass[12pt,twoside]{report}
+
+\input{setup/mypackages}
+\input{setup/macros}
+\input{setup/letterfonts}
+
+\addbibresource{references.bib}
+
+
+%%%%%%%
+
+\title{Thesis Title}
+% \author{It's me\\[1cm]{\small Advisor: A.D.Visor}}
+\date{Day Month Year}
+
+
+\begin{document}
+
+\maketitle
+
+%%%% Frontmatter
+
+\input{setup/pagelayout}
+
+%%%% Main body
+
+% \setcounter{chapter}{-1}  % to start chapter numbering at 0 
+\chapter{Introduction}
+\input{chapters/introduction.tex}
+
+\chapter{Background}
+\input{chapters/background.tex}
+
+\chapter{Conclusion}
+\input{chapters/conclusion.tex}
+
+
+%%%% Endmatter
+
+\appendix
+
+% \chapter{An Appendix}
+% \input{endmatter/appendix01.tex}
+
+\printbibliography[heading=bibintoc, title={References}]
+
+\end{document}

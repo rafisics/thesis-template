@@ -1,0 +1,486 @@
+% basics
+% \usepackage[utf8]{inputenc} % https://tex.stackexchange.com/a/714193/114006
+% \usepackage[T1]{fontenc} % https://tex.stackexchange.com/a/44701/114006
+\usepackage{textcomp}
+% \usepackage{lmodern} % https://tex.stackexchange.com/q/512659/114
+% \usepackage[dutch]{babel}
+% \usepackage{url} % https://tex.stackexchange.com/a/268430/114006
+\usepackage[lowtilde]{xurl} % handling the urls in bib file and it should be loaded before biblatex % https://tex.stackexchange.com/a/714193/114006
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={black},
+    citecolor={black},
+    urlcolor={blue!80!black},
+    bookmarksnumbered=true,
+    % breaklinks, % https://tex.stackexchange.com/a/268430/114006 % useless with pdflatex or lualatex or xelatex
+    % backref=true, 
+    % pagebackref=true
+}
+
+% Page Margins
+% \usepackage[
+%     margin=2.8cm, 
+%     % top=2.8cm, bottom=2.8cm,
+%     % left=1in, right=1in, 
+%     % headheight=14.5pt
+%     ]{geometry}
+
+\usepackage[
+     a4paper,
+     width=150mm,
+     top=25mm,
+     bottom=25mm,
+     bindingoffset=6mm, 
+     % twoside, 
+     % showframe
+     ]{geometry}  % https://www.overleaf.com/learn/latex/How_to_Write_a_Thesis_in_LaTeX_(Part_2)%3A_Page_Layout
+
+\usepackage{fancyhdr}
+% \fancyhf{}% clear all header and footer fields
+\fancyhead[RO]{\nouppercase\rightmark}
+\fancyhead[LE]{\nouppercase\leftmark}
+\fancyhead[RE,LO]{\thepage}
+% \fancyfoot[C]{\thepage}
+
+\setlength{\headheight}{14.49998pt}
+\addtolength{\topmargin}{-2.49998pt}
+
+% \renewcommand{\headrulewidth}{0.4pt}
+% \renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage[shortlabels]{enumitem}
+% \usepackage{parskip}
+\usepackage{emptypage}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor} % Package option usernames is obsolete and ignored
+
+% \usepackage{cmbright}
+
+\usepackage{amsmath, amsfonts, mathtools, amsthm, amssymb}
+\usepackage{mathrsfs}
+% \usepackage{dutchcal} % \mathcal: also small letters. \mathbcal = bold ones. % https://tex.stackexchange.com/a/641540/114006
+\usepackage{dsfont} % https://math.stackexchange.com/a/4350591/445032
+\usepackage{braket} % https://tex.stackexchange.com/a/253232/114006
+\usepackage{cancel}
+\usepackage{bm}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e} % SeniorMars template
+% \usepackage{lipsum} % Giving error in VS Code LaTeX Workshop
+\usepackage{kantlipsum} % https://tex.stackexchange.com/a/131206/114006
+
+\newcommand\N{\ensuremath{\mathbb{N}}}
+\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\Z{\ensuremath{\mathbb{Z}}}
+\renewcommand\O{\ensuremath{\emptyset}}
+\newcommand\Q{\ensuremath{\mathbb{Q}}}
+\newcommand\C{\ensuremath{\mathbb{C}}}
+\DeclareMathOperator{\sgn}{sgn}
+\usepackage{systeme}
+\let\svlim\lim\def\lim{\svlim\limits}
+\let\implies\Rightarrow
+\let\impliedby\Leftarrow
+\let\iff\Leftrightarrow
+\let\epsilon\varepsilon
+\usepackage{stmaryrd} % for \lightning
+\newcommand\contra{\scalebox{1.1}{$\lightning$}}
+% \let\phi\varphi
+
+
+
+
+% hide parts
+\newcommand\hide[1]{}
+
+
+
+% si unitx
+\usepackage{siunitx}
+\sisetup{locale = FR}
+% \renewcommand\vec[1]{\mathbf{#1}}
+\newcommand\mat[1]{\mathbf{#1}}
+
+
+% tikz
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{tikzsymbols} % for symbols such as smiley
+\usetikzlibrary{intersections, angles, quotes, calc, positioning}
+\usetikzlibrary{arrows.meta}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+
+
+\tikzset{
+    force/.style={thick, {Circle[length=2pt]}-stealth, shorten <=-1pt}
+}
+
+
+
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[2]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./images/}{#2.pdf_tex}
+}
+\graphicspath{{./images/}}
+%% http://tex.stackexchange.com/questions/76273/multiple-pdfs-with-page-group-included-in-a-single-page-warning
+\pdfsuppresswarningpagegroup=1
+
+% \newcommand{\nchapter}[2]{%
+%     \setcounter{chapter}{#1}%
+%     \addtocounter{chapter}{-1}%
+%     \chapter{#2}
+% }
+
+% \newcommand{\nsection}[3]{%
+%     \setcounter{chapter}{#1}%
+%     \setcounter{section}{#2}%
+%     \addtocounter{section}{-1}%
+%     \section{#3}
+% }%
+
+\usepackage{listings}
+\lstset
+{
+    language=[LaTeX]TeX,
+    breaklines=true,
+    basicstyle=\tt\scriptsize,
+    keywordstyle=\color{blue},
+    identifierstyle=\color{black},
+}
+
+% % Change paragraph spacing
+% \setlength{\parskip}{4pt}
+% % Change paragraph indent
+% \setlength{\parindent}{0cm}
+
+% for creating \NewDocumentCommand
+% \usepackage{xparse}
+
+
+%% for setting arrows beneath equations 
+
+% % new command notate - https://tex.stackexchange.com/a/263491/114006
+% \usepackage[usestackEOL]{stackengine}
+% \usepackage{scalerel}
+
+% % \parskip \baselineskip  % it's creating problem with my theorem environment box designs
+% \def\svmybf#1{\rotatebox{90}{\stretchto{\{}{#1}}}
+% \def\svnobf#1{}
+% \def\rlwd{.5pt}
+% \newcommand\notate[4][B]{%
+%   \if B#1\let\myupbracefill\svmybf\else\let\myupbracefill\svnobf\fi%
+%   \def\useanchorwidth{T}%
+%   \setbox0=\hbox{$\displaystyle#2$}%
+%   \def\stackalignment{c}\stackunder[-6pt]{%
+%     \def\stackalignment{c}\stackunder[-1.5pt]{%
+%       \stackunder[2pt]{\strut $\displaystyle#2$}{\myupbracefill{\wd0}}}{%
+%     \rule{\rlwd}{#3\baselineskip}}}{%
+%   \strut\kern9pt$\rightarrow$\smash{\rlap{$~\displaystyle#4$}}}%
+% }
+
+% new command indicate - https://tex.stackexchange.com/a/15742/114006
+
+% trees
+% \usepackage[linguistics]{forest}
+
+% some packages from my other templates 
+\usepackage{array} % for tables
+\usepackage[export]{adjustbox}
+% \usepackage{wrapfig} % not properly fitting here
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{extarrows}  % https://tex.stackexchange.com/a/407628/114006
+
+
+% bibliography % https://www.overleaf.com/learn/latex/bibliography_management_with_biblatex
+\usepackage[
+    backend=biber, 
+    style=numeric-comp, 
+    sortcites=true, 
+    sorting=none, 
+    defernumbers=true,
+    % backref=true, 
+]{biblatex}       
+\appto{\bibsetup}{\sloppy} % https://tex.stackexchange.com/a/109917/114006 
+
+% Allow page breaks inside equation environments of amsmath package
+\allowdisplaybreaks
+
+% To cancel terms in equations with diagonal arrows
+\usepackage{cancel} % https://tex.stackexchange.com/a/75530/114006
+\usepackage{bookmark}
+% To write tensors with mixed indices
+\usepackage{tensor} % https://tex.stackexchange.com/a/25976/114006
+\usepackage{derivative} % https://tex.stackexchange.com/a/14822/114006 % https://tex.stackexchange.com/a/501336/114006
+% \usepackage{annotate-equations} % https://github.com/st--/annotate-equations % Not available in TeX Live 2022/dev/Debian
+\usepackage{cleveref} % https://youtu.be/UzMRZowz1xI
+
+% To create dashed box in equations - https://tex.stackexchange.com/a/285489/114006
+\usepackage{dashbox}
+\newcommand\dboxed[1]{\dbox{\ensuremath{#1}}}
+
+% To add Left-aligned texts in equations (doesn't work in equation environment) - https://tex.stackexchange.com/a/60168/114006 
+\makeatletter
+\newif\if@gather@prefix 
+\preto\place@tag@gather{% 
+  \if@gather@prefix\iftagsleft@ 
+    \kern-\gdisplaywidth@ 
+    \rlap{\gather@prefix}% 
+    \kern\gdisplaywidth@ 
+  \fi\fi 
+} 
+\appto\place@tag@gather{% 
+  \if@gather@prefix\iftagsleft@\else 
+    \kern-\displaywidth 
+    \rlap{\gather@prefix}% 
+    \kern\displaywidth 
+  \fi\fi 
+  \global\@gather@prefixfalse 
+} 
+\preto\place@tag{% 
+  \if@gather@prefix\iftagsleft@ 
+    \kern-\gdisplaywidth@ 
+    \rlap{\gather@prefix}% 
+    \kern\displaywidth@ 
+  \fi\fi 
+} 
+\appto\place@tag{% 
+  \if@gather@prefix\iftagsleft@\else 
+    \kern-\displaywidth 
+    \rlap{\gather@prefix}% 
+    \kern\displaywidth 
+  \fi\fi 
+  \global\@gather@prefixfalse 
+} 
+\def\math@cr@@@align{%
+  \ifst@rred\nonumber\fi
+  \if@eqnsw \global\tag@true \fi
+  \global\advance\row@\@ne
+  \add@amps\maxfields@
+  \omit
+  \kern-\alignsep@
+  \if@gather@prefix\tag@true\fi
+  \iftag@
+    \setboxz@h{\@lign\strut@{\make@display@tag}}%
+    \place@tag
+  \fi
+  \ifst@rred\else\global\@eqnswtrue\fi
+  \global\lineht@\z@
+  \cr
+}
+\newcommand*{\lefttext}[1]{% 
+  \ifmeasuring@\else
+  \gdef\gather@prefix{#1}% 
+  \global\@gather@prefixtrue 
+  \fi
+} 
+\makeatother
+
+% \usepackage[none]{hyphenat}
+\usepackage{nicematrix} 
+
+% Command for circle around text [used chatgpt]
+\newcommand{\mycir}[1]{%
+    \mathchoice%
+        {\mycirAux{\displaystyle}{#1}}%
+        {\mycirAux{\textstyle}{#1}}%
+        {\mycirAux{\scriptstyle}{#1}}%
+        {\mycirAux{\scriptscriptstyle}{#1}}%
+}
+\newcommand{\mycirAux}[2]{%
+        \tikz[baseline=(char.base)]{%
+            \node[draw, circle, inner sep=1pt, font={\fontsize{8}{8}\selectfont}] (char) 
+            {\ensuremath{#1{#2}}};
+        }
+}
+
+% Custom environment for table-like matrix / cagedmatrix % https://tex.stackexchange.com/a/686197/114006
+
+\ExplSyntaxOn
+\NewDocumentEnvironment{cagedmatrix}{b}
+ {
+  % split the input at \\
+  \seq_set_split:Nnn \l_tmpa_seq { \\ } { #1 }
+  % check for a missing trailing \\
+  \seq_pop_right:NN \l_tmpa_seq \l_tmpa_tl
+  \tl_if_empty:NF \l_tmpa_tl { \seq_put_right:NV \l_tmpa_seq \l_tmpa_tl }
+  % build the array, inserting \\ \hline between rows
+  \array{|*{\value{MaxMatrixCols}}{c|}}\hline
+  \seq_use:Nn \l_tmpa_seq { \\ \hline }
+  % finish up
+  \\ \hline
+  \endarray
+}{}
+\ExplSyntaxOff
+
+% % Another method: using ytableau but it has issues in case of horizontal-aligning with other terms in equations.  
+% \usepackage{ytableau}
+
+% % Another custom command for tabularmatrix % https://tex.stackexchange.com/a/686232/114006
+% \usepackage{tabularray}
+% \NewDocumentEnvironment{tabularmatrix}{+b}{
+%     \begin{tblr}{
+%        hlines, vlines, columns={c},
+%        rowsep=0.1pt, colsep=5pt,
+%        }
+%     #1
+%     \end{tblr}
+%     }{}
+
+% Define cagedbox command
+\newcommand{\cagedbox}[1]{%
+  \begin{tabularmatrix}%
+    #1%
+  \end{tabularmatrix}%
+}
+
+%% Change formatting of back references: To enable it, `backref=true` is needed in biblatex'' % https://tex.stackexchange.com/a/606518/114006
+
+\DefineBibliographyStrings{english}{
+  backrefpage  = {p\adddot},
+  backrefpages = {pp\adddot},
+}
+
+\DeclareFieldFormat{backrefparens}{\raisebox{-4pt}{\scriptsize{\mkbibparens{#1}}}}
+\renewbibmacro*{pageref}{%
+  \iflistundef{pageref}
+    {}
+    {\setunit{\finentrypunct\addnbspace}%
+     \printtext[backrefparens]{%
+       \ifnumgreater{\value{pageref}}{1}
+         {\bibstring{backrefpages}\ppspace}
+         {\bibstring{backrefpage}\ppspace}%
+       \printlist[pageref][-\value{listtotal}]{pageref}}%
+     \renewcommand\finentrypunct{}
+     }
+}
+
+
+%% Add dot to the end of numbering in PDF bookmarks
+\makeatletter
+\renewcommand{\Hy@numberline}[1]{#1. }            % https://tex.stackexchange.com/a/150984/114006
+\makeatother
+
+%% Removing the dots from ToC  % https://tex.stackexchange.com/a/55830/114006
+\usepackage{tocloft}
+\renewcommand{\cftdot}{} 
+
+%% Hiding location, url and urldate from journal articles, books and preprints (biblatex) % https://tex.stackexchange.com/a/166687/114006
+\DeclareSourcemap{
+    \maps[datatype=bibtex]{
+        \map{
+            % \perdatasource{references.bib}
+            \pertype{article}
+            \pertype{book}
+            \pertype{incollection}
+            % \step[fieldset=abstract, null]
+            \step[fieldset=location, null]
+            \step[fieldset=url, null]
+            \step[fieldset=urldate, null]
+        }
+        \map{
+            \pertype{online}
+            \step[fieldsource=url, match=\regexp{/arxiv\.}, fieldset=url, null]
+            \step[fieldset=urldate, null]
+            % \step[fieldset=url, null]
+        }
+    }
+}
+
+%%% Breaking links/urls with biblatx penalty  % https://tex.stackexchange.com/q/714190 
+
+\setcounter{biburlnumpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
+\setcounter{biburllcpenalty}{9000}
+
+
+%%% eps figures with pdflatex % https://tex.stackexchange.com/a/38527/114006
+
+\usepackage{epstopdf}
+\epstopdfsetup{update} % only regenerate pdf files when eps file is newer
+
+
+%%% Changing the title page % 
+
+\makeatletter         
+\renewcommand\maketitle{
+% {
+    % \raggedright % Note the extra {
+        \begin{center}
+            \null\mbox{}\vfill
+
+            \includegraphics[scale=1]{university-logo.jpg}
+            \\[4ex]
+            {
+                \Huge 
+                % \Large
+                % \bfseries \sffamily 
+                % \large 
+                \@title 
+            }
+            % \\[4ex]
+            % {\Large  \@author}\\[4ex] 
+            % \@date\\[8ex]
+            \vskip 0.2in   %BCR
+    
+            M.S. THESIS \\
+             \vfill
+            % \vskip 0.3 in   %BCR
+          %  \centerline{\@author}
+          %  \centerline{\@hometown}
+          
+            %  \singlespacing
+              A Thesis submitted to the thesis committee of \\
+              the Department of Theoretical Physics of University of Dhaka \\
+              as partial requirements for the Degree of \\
+              Master of Science
+          
+          
+        %   \vskip .5in  %BCR
+          
+        %   \begin{figure}[htbp]
+        %   %\hspace*{13cm}
+        %   \includegraphics[scale=1]{university-logo.jpg}
+        %   \centering
+        %   \end{figure}
+          
+          
+        %   \vskip 0.5in  %BCR
+          
+          \vfill 
+          
+              SUBMITTED BY 
+              \vskip 0.3in  %BCR
+              Exam Roll No.: ....
+              \vskip 0.1in  %BCR
+              Reg. No.: .......
+              \vskip 0.1in  %BCR
+              Session : ........
+              \vskip 0.1in  %BCR
+          
+              Department of Theoretical Physics
+              \vskip 0.1in  %BCR
+              University of Dhaka
+              \vskip 0.1in  %BCR
+              2024
+              \vfill\null 
+        \end{center}
+% }
+} % Note the extra }
+\makeatother
+
+%%% Changing the paragraoh spacing  % https://www.overleaf.com/learn/latex/Articles/How_to_change_paragraph_spacing_in_LaTeX#Flexible_\parskip
+\setlength{\parskip}{8pt plus2pt minus2pt}
+
+
+%%% Decrease the font sizes of sections, subsections... % https://tex.stackexchange.com/a/203325/114006
+\usepackage[raggedright, medium]{titlesec}
