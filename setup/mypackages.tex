@@ -27,27 +27,41 @@
 %     ]{geometry}
 
 \usepackage[
-     a4paper,
-     width=150mm,
+    %  a4paper,
+     width=155mm,
      top=25mm,
      bottom=25mm,
      bindingoffset=6mm, 
-     % twoside, 
-     % showframe
+     left=25mm, 
+    %  right=20mm,
+    %  twoside=false,
+    %  twoside, 
+    %  showframe
      ]{geometry}  % https://www.overleaf.com/learn/latex/How_to_Write_a_Thesis_in_LaTeX_(Part_2)%3A_Page_Layout
 
 \usepackage{fancyhdr}
 % \fancyhf{}% clear all header and footer fields
-\fancyhead[RO]{\nouppercase\rightmark}
-\fancyhead[LE]{\nouppercase\leftmark}
-\fancyhead[RE,LO]{\thepage}
-% \fancyfoot[C]{\thepage}
+
+%%% For bothside document
+% \fancyhead[RO]{\nouppercase\rightmark}
+% \fancyhead[LE]{\nouppercase\leftmark}
+% \fancyhead[RE,LO]{\thepage}
+%% \fancyfoot[C]{\thepage}
+
+%%% For oneside document
+\fancyhead[R]{\nouppercase\rightmark}
+% \fancyhead{\nouppercase\leftmark}
+\fancyhead[L]{\thepage}
+%% \fancyfoot[C]{\thepage}
 
 \setlength{\headheight}{14.49998pt}
 \addtolength{\topmargin}{-2.49998pt}
 
 % \renewcommand{\headrulewidth}{0.4pt}
 % \renewcommand{\footrulewidth}{0.4pt}
+
+%%%% Display chapter title on the header when no section is started % https://tex.stackexchange.com/a/720073/114006
+\renewcommand{\chaptermark}[1]{\markright{#1}}
 
 \usepackage{graphicx}
 \usepackage{float}
@@ -69,7 +83,8 @@
 \usepackage{cancel}
 \usepackage{bm}
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e} % SeniorMars template
-% \usepackage{lipsum} % Giving error in VS Code LaTeX Workshop
+\usepackage{lipsum} % Giving error in VS Code LaTeX Workshop
+\usepackage{blindtext} % https://tex.stackexchange.com/a/604919/114006
 \usepackage{kantlipsum} % https://tex.stackexchange.com/a/131206/114006
 
 \newcommand\N{\ensuremath{\mathbb{N}}}
@@ -157,10 +172,6 @@
     identifierstyle=\color{black},
 }
 
-% % Change paragraph spacing
-% \setlength{\parskip}{4pt}
-% % Change paragraph indent
-% \setlength{\parindent}{0cm}
 
 % for creating \NewDocumentCommand
 % \usepackage{xparse}
@@ -396,7 +407,7 @@
     }
 }
 
-%%% Breaking links/urls with biblatx penalty  % https://tex.stackexchange.com/q/714190 
+%%% Breaking links/urls with biblatex penalty  % https://tex.stackexchange.com/q/714190 
 
 \setcounter{biburlnumpenalty}{9000}
 \setcounter{biburlucpenalty}{9000}
@@ -405,24 +416,30 @@
 
 %%% eps figures with pdflatex % https://tex.stackexchange.com/a/38527/114006
 
-\usepackage{epstopdf}
-\epstopdfsetup{update} % only regenerate pdf files when eps file is newer
+% \usepackage{epstopdf}
+% \epstopdfsetup{update} % only regenerate pdf files when eps file is newer
 
 
-%%% Changing the title page % 
+%%% Custom commands to insert the student academic info: exam roll, reg. no., session, supervisor name etc.  
+\newcommand{\examroll}[1]{ \newcommand{\examrollloc}{#1} }
+\newcommand{\reg}[1]{ \newcommand{\regloc}{#1} }
+\newcommand{\session}[1]{ \newcommand{\sessionloc}{#1} }
+\newcommand{\supervisor}[1]{ \newcommand{\supervisorloc}{#1} }
+
+%%% Changing the title page
 
 \makeatletter         
 \renewcommand\maketitle{
+        \setcounter{page}{0}
 % {
     % \raggedright % Note the extra {
         \begin{center}
             \null\mbox{}\vfill
-
-            \includegraphics[scale=1]{university-logo.jpg}
+            \includegraphics[scale=0.4]{university-logo}
             \\[4ex]
             {
-                \Huge 
-                % \Large
+                % \huge 
+                \Large
                 % \bfseries \sffamily 
                 % \large 
                 \@title 
@@ -431,56 +448,97 @@
             % {\Large  \@author}\\[4ex] 
             % \@date\\[8ex]
             \vskip 0.2in   %BCR
-    
             M.S. THESIS \\
              \vfill
-            % \vskip 0.3 in   %BCR
-          %  \centerline{\@author}
-          %  \centerline{\@hometown}
-          
-            %  \singlespacing
+              % \vskip 0.3 in   %BCR
+              % \centerline{\@author}
+              % \centerline{\@hometown}
+              %  \singlespacing
               A Thesis submitted to the thesis committee of \\
               the Department of Theoretical Physics of University of Dhaka \\
               as partial requirements for the Degree of \\
-              Master of Science
-          
-          
-        %   \vskip .5in  %BCR
-          
-        %   \begin{figure}[htbp]
-        %   %\hspace*{13cm}
-        %   \includegraphics[scale=1]{university-logo.jpg}
-        %   \centering
-        %   \end{figure}
-          
-          
-        %   \vskip 0.5in  %BCR
-          
-          \vfill 
-          
+              Master of Science          
+              % \vskip .5in  %BCR
+              % \begin{figure}[htbp]
+              % %\hspace*{13cm}
+              % \includegraphics[scale=1]{university-logo.jpg}
+              % \centering
+              % \end{figure}
+              % \vskip 0.5in  %BCR          
+              \vfill 
               SUBMITTED BY 
               \vskip 0.3in  %BCR
-              Exam Roll No.: ....
+              Exam Roll : \examrollloc
               \vskip 0.1in  %BCR
-              Reg. No.: .......
+              Registration : \regloc
               \vskip 0.1in  %BCR
-              Session : ........
+              Session : \sessionloc
               \vskip 0.1in  %BCR
-          
               Department of Theoretical Physics
               \vskip 0.1in  %BCR
               University of Dhaka
               \vskip 0.1in  %BCR
-              2024
+              \@date 
               \vfill\null 
         \end{center}
 % }
 } % Note the extra }
 \makeatother
 
-%%% Changing the paragraoh spacing  % https://www.overleaf.com/learn/latex/Articles/How_to_change_paragraph_spacing_in_LaTeX#Flexible_\parskip
+%%% Changing the paragraph spacing  % https://www.overleaf.com/learn/latex/Articles/How_to_change_paragraph_spacing_in_LaTeX
 \setlength{\parskip}{8pt plus2pt minus2pt}
+%%% Change paragraph indent
+% \setlength{\parindent}{20pt}
 
+%%% Change different features of spacing
+% \setlength{\baselineskip}{12pt}
+\setlength{\lineskip}{3.5pt}
+% \setlength{\lineskiplimit}{2pt}
+
+\usepackage{setspace}
+% \renewcommand{\baselinestretch}{1.5}
 
 %%% Decrease the font sizes of sections, subsections... % https://tex.stackexchange.com/a/203325/114006
 \usepackage[raggedright, medium]{titlesec}
+
+
+%%% Page numbering from the abstract page % https://tex.stackexchange.com/a/285670/114006
+\usepackage{etoolbox}
+\makeatletter
+\newif\if@abstractmode
+
+\renewenvironment{titlepage}
+{
+  \if@twocolumn
+  \@restonecoltrue\onecolumn
+  \else
+  \@restonecolfalse\newpage
+  \fi
+  \if@abstractmode
+  \thispagestyle{plain}%
+  \stepcounter{page}%
+  \else
+  \thispagestyle{empty}%
+  \setcounter{page}\@ne%
+  \fi
+}%
+{\if@restonecol\twocolumn \else \newpage \fi
+  \if@twoside\else
+  \if@abstractmode
+  \else
+  \setcounter{page}\@ne%
+  \fi
+  \fi
+}
+
+\AtBeginEnvironment{abstract}{%
+  \@abstractmodetrue%
+}
+
+
+%%% For the symbol of normal ordering or operators 
+\usepackage{stackengine,scalerel}
+
+%%% Add quotes  % https://www.overleaf.com/learn/latex/Typesetting_quotations
+\usepackage{epigraph} 
+\usepackage{quotchap} % Changes the Chapter heading style 

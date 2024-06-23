@@ -1,8 +1,10 @@
-\pagenumbering{gobble}
-% \pagenumbering{roman}   % to show preface on toc
-\newpage
-\pagestyle{plain}
 \pagenumbering{roman}
+\maketitle
+% \pagenumbering{gobble}
+% \pagenumbering{roman}   % to show preface on toc
+% \clearpage
+% \pagestyle{plain}
+% \pagenumbering{roman}
 
 % \setcounter{tocdepth}{1}
 
@@ -29,5 +31,11 @@
 % \listoftables      
 % \listoffigures   
 
+\cleardoublepage
 \pagestyle{fancy}
 \pagenumbering{arabic}
+
+% \setstretch{1.25} % no warning
+% \setstretch{1.5} % no warning, but not giving the same as \onehalfspacing 
+\onehalfspacing % no warning 
+% \doublespacing % no warning, but equation spacing looks bad 
