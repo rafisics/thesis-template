@@ -46,10 +46,13 @@
 % \fancyhead[RO]{\nouppercase\rightmark}
 % \fancyhead[LE]{\nouppercase\leftmark}
 % \fancyhead[RE,LO]{\thepage}
+%% \fancyfoot[C]{\thepage}
 
 %%% For oneside document
 \fancyhead[R]{\nouppercase\rightmark}
+% \fancyhead{\nouppercase\leftmark}
 \fancyhead[L]{\thepage}
+%% \fancyfoot[C]{\thepage}
 
 \setlength{\headheight}{14.49998pt}
 \addtolength{\topmargin}{-2.49998pt}
@@ -57,7 +60,7 @@
 % \renewcommand{\headrulewidth}{0.4pt}
 % \renewcommand{\footrulewidth}{0.4pt}
 
-%%%% Display chapter title on the header when no section is started % https://tex.stackexchange.com/a/720073/114006
+%%% Display chapter title on the header when no section is started % https://tex.stackexchange.com/a/720073/114006
 \renewcommand{\chaptermark}[1]{\markright{#1}}
 
 \usepackage{graphicx}
@@ -143,7 +146,7 @@
     \import{./images/}{#2.pdf_tex}
 }
 \graphicspath{{./images/}}
-%% http://tex.stackexchange.com/questions/76273/multiple-pdfs-with-page-group-included-in-a-single-page-warning
+%%% http://tex.stackexchange.com/questions/76273/multiple-pdfs-with-page-group-included-in-a-single-page-warning
 \pdfsuppresswarningpagegroup=1
 
 % \newcommand{\nchapter}[2]{%
@@ -351,7 +354,7 @@
   \end{tabularmatrix}%
 }
 
-%% Change formatting of back references: To enable it, `backref=true` is needed in biblatex'' % https://tex.stackexchange.com/a/606518/114006
+%%% Change formatting of back references: To enable it, `backref=true` is needed in biblatex'' % https://tex.stackexchange.com/a/606518/114006
 
 \DefineBibliographyStrings{english}{
   backrefpage  = {p\adddot},
@@ -373,16 +376,16 @@
 }
 
 
-%% Add dot to the end of numbering in PDF bookmarks
+%%% Add dot to the end of numbering in PDF bookmarks
 \makeatletter
 \renewcommand{\Hy@numberline}[1]{#1. }            % https://tex.stackexchange.com/a/150984/114006
 \makeatother
 
-%% Removing the dots from ToC  % https://tex.stackexchange.com/a/55830/114006
-\usepackage{tocloft}
+%%% Removing the dots from ToC  % https://tex.stackexchange.com/a/55830/114006
+\usepackage[titles]{tocloft}  % https://tex.stackexchange.com/a/721164/114006
 \renewcommand{\cftdot}{} 
 
-%% Hiding location, url and urldate from journal articles, books and preprints (biblatex) % https://tex.stackexchange.com/a/166687/114006
+%%% Hiding location, url and urldate from journal articles, books and preprints (biblatex) % https://tex.stackexchange.com/a/166687/114006
 \DeclareSourcemap{
     \maps[datatype=bibtex]{
         \map{
@@ -536,6 +539,15 @@
 %%% For the symbol of normal ordering or operators 
 \usepackage{stackengine,scalerel}
 
-%%% Add quotes  % https://www.overleaf.com/learn/latex/Typesetting_quotations
+%%% Add quotes % https://www.overleaf.com/learn/latex/Typesetting_quotations
 \usepackage{epigraph} 
-\usepackage{quotchap} % Changes the Chapter heading style 
+%%% Add quotes and also change the Chapter heading style
+\usepackage{quotchap} 
+% https://tex.stackexchange.com/a/25948/114006
+\makeatletter
+\renewcommand*{\sectfont}{\bfseries}
+% \renewcommand*{\chapnumfont}{%
+%   \usefont{T1}{\@defaultcnfont}{b}{n}\fontsize{120}{150}\selectfont% Default: 100/130
+%   \color{chaptergrey}%
+% }
+\makeatother
