@@ -535,6 +535,18 @@
   \@abstractmodetrue%
 }
 
+%%% Add a custom dedication env % https://tex.stackexchange.com/a/167529/114006
+\newenvironment{dedication}
+  {
+  \vspace*{\stretch{1}}
+   \begin{flushleft}
+   \itshape 
+  }
+  {
+    \par  
+    \end{flushleft}
+   \vspace{\stretch{3}}         
+  }
 
 %%% For the symbol of normal ordering or operators 
 \usepackage{stackengine,scalerel}
