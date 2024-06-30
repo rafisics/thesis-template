@@ -1,31 +1,28 @@
 \pagenumbering{roman}
+\pdfbookmark{Title}{title}
 \maketitle
-% \pagenumbering{gobble}
-% \pagenumbering{roman}   % to show preface on toc
-% \clearpage
-% \pagestyle{plain}
-% \pagenumbering{roman}
 
-% \setcounter{tocdepth}{1}
+\cleardoublepage
 
 \pdfbookmark{Abstract}{abstract}
 \begin{abstract}
     \input{frontmatter/abstract}
 \end{abstract}
 
-% \pdfbookmark{Dedication}{dedication}
-% \chapter*{Dedication}
-% \input{frontmatter/dedication}
+\cleardoublepage
 
-% \pdfbookmark{Declaration}{declaration}
-% \chapter*{Declaration}
-% \input{frontmatter/declaration}
+\pdfbookmark{Dedication}{dedication}
+\input{frontmatter/dedication}
 
-\pdfbookmark{Acknowledgments}{acknowledgement}
+\cleardoublepage
+
+\pdfbookmark{Acknowledgements}{acknowledgement}
 \chapter*{Acknowledgements}
 \input{frontmatter/acknowledgement}
 
-\clearpage\phantomsection\pdfbookmark{\contentsname}{toc} % https://tex.stackexchange.com/a/42352/114006
+\cleardoublepage
+
+\pdfbookmark{\contentsname}{toc} % https://tex.stackexchange.com/a/42352/114006
 \tableofcontents
 
 % \listoftables      
